@@ -3,14 +3,14 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
+require('dotenv').config();
 const User = require('../models/user');
 
 router.post('/signup', async (req, res, next)=> {
     try {
         const user = await User.findOne({email: req.body.email});
         if(user){
-            res.status(409).json({
+            res.status(400).json({
                 message: 'Email exists'
             })
         }
@@ -56,7 +56,7 @@ router.post('/login', async (req, res, next)=>{
                     email: user[0].email,
                     userId: user[0]._id
                 },
-                "secret",
+                process.env.secret,
                 {
                     expiresIn: "1h"
                 });
