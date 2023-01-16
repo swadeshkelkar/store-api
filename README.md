@@ -4,7 +4,7 @@
 ## Setup
 1. Run npm install
 2. Make a cluster on mongoDB and get the URI.
-3. Put that URI in a .env file with mongoURI as its name and the URI as key
+3. Put that URI in a .env file with mongoURI as its key name and the URI as value
 4. Make a folder named uploads in the root directory for images
 5. Run npm start
 
